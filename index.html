@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COIN আয় করুন - বিজ্ঞাপন দেখুন</title>
-    <script src='//libtl.com/sdk.js' data-zone='9472189' data-sdk='show_9472189'></script>
+    <!-- UPDATED: Zone ID 11025209 -->
+    <script src='//libtl.com/sdk.js' data-zone='11025209' data-sdk='show_11025209'></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -392,7 +393,7 @@
         }
 
         function checkAdReady() {
-            if (typeof window.show_9472189!== 'function') {
+            if (typeof window.show_11025209 !== 'function') {
                 setTimeout(checkAdReady, 1000);
             } else {
                 document.getElementById('ad-status').innerHTML = '<i class="fas fa-check-circle"></i> বিজ্ঞাপন প্রস্তুত';
@@ -414,11 +415,11 @@
             document.getElementById('ads-progress').textContent = `${earnedPoints.toFixed(0)}/${settings.minWithdraw} COIN`;
         }
 
-        // UPDATED: Monetag Rewarded Ad Integration
+        // UPDATED: Monetag Rewarded Ad Integration - Zone 11025209
         window.watchAd = async function() {
             if (isBlocked) return;
             if (isAdLoading) return;
-            if (typeof window.show_9472189!== 'function') {
+            if (typeof window.show_11025209 !== 'function') {
                 showNotification('অ্যাড লোড হচ্ছে, অপেক্ষা করো', 'warning');
                 return;
             }
@@ -427,7 +428,7 @@
             document.getElementById('watch-ad-btn').disabled = true;
 
             try {
-                await window.show_9472189().then(() => {
+                await window.show_11025209().then(() => {
                     // Ad watched successfully
                     watchedAdsCount++;
                     earnedPoints += settings.perAdRate;
