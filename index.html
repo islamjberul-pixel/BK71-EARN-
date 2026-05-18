@@ -68,7 +68,7 @@
         .btn:disabled { opacity: 0.6; cursor: not-allowed; }
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 8px; font-size: 14px; color: var(--text-muted); }
-        .form-control {
+        .form-group input, .form-group select {
             width: 100%; padding: 12px 15px; background-color: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px;
             color: var(--text-color); font-size: 14px; outline: none;
@@ -292,7 +292,6 @@
             loadNotices();
             loadWithdrawHistory();
             
-            // Telegram Mini App Ready
             if (window.Telegram && window.Telegram.WebApp) {
                 window.Telegram.WebApp.ready();
                 window.Telegram.WebApp.expand();
@@ -415,21 +414,30 @@
             document.getElementById('ads-progress').textContent = `${earnedPoints.toFixed(0)}/${settings.minWithdraw} COIN`;
         }
 
+        // UPDATED: Monetag Rewarded Ad Integration
         window.watchAd = async function() {
             if (isBlocked) return;
             if (isAdLoading) return;
-            if (typeof window.show_9472189!== 'function') return;
+            if (typeof window.show_9472189!== 'function') {
+                showNotification('অ্যাড লোড হচ্ছে, অপেক্ষা করো', 'warning');
+                return;
+            }
 
             isAdLoading = true;
             document.getElementById('watch-ad-btn').disabled = true;
 
             try {
-                await window.show_9472189();
-                watchedAdsCount++;
-                earnedPoints += settings.perAdRate;
-                await saveUserData();
-                updateUI();
-                showNotification(`${settings.perAdRate} COIN যোগ হয়েছে!`, 'success');
+                await window.show_9472189().then(() => {
+                    // Ad watched successfully
+                    watchedAdsCount++;
+                    earnedPoints += settings.perAdRate;
+                    saveUserData();
+                    updateUI();
+                    showNotification(`${settings.perAdRate} COIN যোগ হয়েছে!`, 'success');
+                }).catch(() => {
+                    // User closed ad before completing
+                    showNotification('অ্যাড শেষ করো COIN পেতে', 'error');
+                });
             } catch (error) {
                 showNotification('অ্যাড লোড হয়নি', 'error');
             }
