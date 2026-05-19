@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COIN আয় করুন - বিজ্ঞাপন দেখুন</title>
-    <!-- UPDATED: Zone ID 11025209 -->
+    
+    <!-- Monetag Rewarded SDK -->
     <script src='//libtl.com/sdk.js' data-zone='11025209' data-sdk='show_11025209'></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -125,14 +126,7 @@
             <p>বিজ্ঞাপন দেখে COIN আয় করুন</p>
         </div>
 
-        <div class="ad-container">
-            <center>
-                <script type="text/javascript">
-                    atOptions = { 'key' : 'af3ac5da264d48edf05886e0c3d572c2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/af3ac5da264d48edf05886e0c3d572c2/invoke.js"></script>
-            </center>
-        </div>
+        <!-- পুরোনো Adsterra অ্যাড মুছে ফেলছি। এটা রাখলে Monetag Active হবে না -->
 
         <div class="page-section active" id="home-page">
             <div class="user-card">
@@ -415,12 +409,12 @@
             document.getElementById('ads-progress').textContent = `${earnedPoints.toFixed(0)}/${settings.minWithdraw} COIN`;
         }
 
-        // UPDATED: Monetag Rewarded Ad Integration - Zone 11025209
+        // Monetag Rewarded Ad Integration
         window.watchAd = async function() {
             if (isBlocked) return;
             if (isAdLoading) return;
             if (typeof window.show_11025209 !== 'function') {
-                showNotification('অ্যাড লোড হচ্ছে, অপেক্ষা করো', 'warning');
+                showNotification('অ্যাড লোড হচ্ছে, 3 সেকেন্ড অপেক্ষা করো', 'warning');
                 return;
             }
 
@@ -429,7 +423,7 @@
 
             try {
                 await window.show_11025209().then(() => {
-                    // Ad watched successfully
+                    // Ad watched successfully - Reward দাও
                     watchedAdsCount++;
                     earnedPoints += settings.perAdRate;
                     saveUserData();
