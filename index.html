@@ -3,276 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>টাকা আয় করুন - Bangla Task</title>
+    <title>COIN আয় করুন - বিজ্ঞাপন দেখুন</title>
     <meta name="bengalads-site-verification" content="942c9e9232b1361d1aedcd643cc3b99e3f02edeeb841d0fa">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!-- Telegram SDK -->
+    <script src='//libtl.com/sdk.js' data-zone='11025209' data-sdk='show_11025209'></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap');
         :root {
-            --primary: #00f2ff; --secondary: #a855f7; --bg: #050816;
-            --card: rgba(22, 28, 45, 0.6); --text: #e0e7ff; --muted: #94a3b8;
+            --primary-glow: #00f2ff; --secondary-glow: #a855f7; --bg-dark: #050816;
+            --card-bg: rgba(22, 28, 45, 0.6); --text-color: #e0e7ff; --text-muted: #94a3b8;
             --success: #22c55e; --warning: #f59e0b; --danger: #ef4444;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Hind Siliguri', sans-serif; }
-        body { background: var(--bg); color: var(--text); padding: 15px; padding-bottom: 90px; }
-   .container { max-width: 480px; margin: 0 auto; }
-   .header { text-align: center; padding: 20px 0; }
-   .header h1 { background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 26px; }
-   .card { background: var(--card); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; margin: 15px 0; }
-   .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; text-align: center; }
-   .stats h3 { font-size: 12px; color: var(--muted); }
-   .stats p { font-size: 20px; font-weight: 700; color: var(--primary); }
-   .btn { width: 100%; padding: 16px; border: none; border-radius: 15px; font-weight: 600; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; transition: 0.3s; }
-   .btn-primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #050816; }
-   .btn-secondary { background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid rgba(255,255,255,0.1); }
-   .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-   .bottom-nav { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); background: var(--card); backdrop-filter: blur(15px); display: flex; justify-content: space-around; padding: 8px; border-radius: 25px; width: calc(100% - 30px); max-width: 400px; border: 1px solid rgba(255,255,255,0.1); }
-   .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--muted); text-decoration: none; font-size: 11px; padding: 8px 15px; border-radius: 18px; width: 33%; }
-   .nav-item.active { color: var(--primary); background: rgba(0,242,255,0.1); }
-   .page { display: none; }.page.active { display: block; }
-   .ad-box { width: 320px; height: 50px; margin: 8px auto; background: rgba(0,0,0,0.4); border: 1px dashed var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 12px; overflow: hidden; }
-   .math-box { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; text-align: center; margin: 15px 0; border: 2px solid var(--primary); }
-   .math-box.completed { border-color: var(--success); opacity: 0.6; }
-   .math-box input { width: 100px; padding: 10px; font-size: 18px; text-align: center; border-radius: 10px; border: 1px solid var(--primary); background: #000; color: var(--text); margin: 10px; }
-   .notification { position: fixed; top: 20px; right: 20px; padding: 15px; border-radius: 12px; background: var(--card); transform: translateX(150%); transition: 0.5s; z-index: 1000; }
-   .notification.show { transform: translateX(0); }
-   .ref-link-box { display:flex; margin-top:15px; }
-   .ref-link-box input { flex:1; border-radius:12px 0 0 12px; border:1px solid rgba(255,255,255,0.1); background:rgba(0,0,0,0.2); color:var(--text); padding:12px; outline:none; font-size:11px; }
-   .timer { color: var(--warning); font-size: 12px; margin-top: 5px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Hind Siliguri', sans-serif; background: var(--bg-dark); color: var(--text-color); min-height: 100vh; padding: 15px; padding-bottom: 90px; }
+       .container { max-width: 480px; margin: 0 auto; }
+       .header { background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; padding: 25px 0; text-align: center; }
+       .header h1 { font-size: 28px; font-weight: 700; }
+       .card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); margin: 15px 0; padding: 20px; border-radius: 20px; }
+       .stats-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+       .stat-card { text-align: center; }
+       .stat-card h3 { font-size: 13px; color: var(--text-muted); }
+       .stat-card p { font-size: 26px; font-weight: 700; color: var(--primary-glow); }
+       .btn { width:100%; padding: 16px; border: none; border-radius: 15px; font-weight: 600; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; transition: 0.3s; }
+       .btn-primary { background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow)); color: #050816; }
+       .btn-secondary { background: rgba(255, 255, 255, 0.05); color: var(--text-color); border: 1px solid rgba(255, 255, 255, 0.1); }
+       .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+       .bottom-nav { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); background: var(--card-bg); backdrop-filter: blur(15px); display: flex; justify-content: space-around; padding: 8px; border-radius: 25px; width: calc(100% - 30px); max-width: 400px; }
+       .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); text-decoration: none; font-size: 11px; padding: 8px 15px; border-radius: 18px; width: 33%; }
+       .nav-item.active { color: var(--primary-glow); background: rgba(0, 242, 255, 0.1); }
+       .page-section { display: none; }.page-section.active { display: block; }
+       .ad-box { width: 320px; height: 50px; margin: 8px auto; background: rgba(0,0,0,0.4); border-radius: 8px; overflow: hidden; border: 1px dashed var(--primary-glow); }
+       .math-box { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; text-align: center; margin: 15px 0; border: 2px solid var(--primary-glow); }
+       .math-box.completed { border-color: var(--success); opacity: 0.6; }
+       .math-box input { width: 100px; padding: 10px; font-size: 18px; text-align: center; border-radius: 10px; border: 1px solid var(--primary-glow); background: #000; color: var(--text-color); margin: 10px; }
+       .notification { position: fixed; top: 20px; right: 20px; padding: 15px; border-radius: 12px; background: var(--card-bg); transform: translateX(150%); transition: 0.5s; z-index: 1000; border-left: 4px solid var(--primary-glow); }
+       .notification.show { transform: translateX(0); }
+       .timer { color: var(--warning); font-size: 12px; margin-top: 5px; }
+       .ref-link-box { display:flex; margin-top:15px; }
+       .ref-link-box input { flex:1; border-radius:12px 0 0 12px; border:1px solid rgba(255,255,255,0.1); background:rgba(0,0,0,0.2); color:var(--text-color); padding:12px; outline:none; font-size:11px; }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header"><h1>টাকা আয় করুন</h1></div>
+    <div class="container">
+        <div class="header"><h1>COIN আয় করুন</h1></div>
 
-    <div class="page active" id="home">
-        <div class="card stats">
-            <div><h3>ব্যালেন্স</h3><p id="balance">0.00</p></div>
-            <div><h3>মোট আয়</h3><p id="total">0.00</p></div>
-            <div><h3>রেফার</h3><p id="referral">0</p></div>
-        </div>
-        <button class="btn btn-primary" onclick="showPage('task')"><i class="fas fa-tasks"></i> টাস্ক করুন</button>
-        <button class="btn btn-secondary" onclick="showPage('withdraw')"><i class="fas fa-wallet"></i> উত্তোলন করুন</button>
-        <div class="card">
-            <h3><i class="fas fa-users"></i> বন্ধুকে রেফার করুন</h3>
-            <p>প্রতি রেফারে পাবেন: 2.00 টাকা</p>
-            <div class="ref-link-box">
-                <input type="text" id="referral-link" readonly>
-                <button onclick="shareTelegram()" class="btn btn-primary"><i class="fab fa-telegram"></i></button>
+        <div class="page-section active" id="home-page">
+            <div class="stats-container">
+                <div class="stat-card card"><h3>দেখা টাস্ক</h3><p id="watched-ads">0</p></div>
+                <div class="stat-card card"><h3>আয়কৃত COIN</h3><p id="earned-money">0.00</p></div>
+            </div>
+            <button class="btn btn-primary" onclick="showPage('task-page')"><i class="fas fa-tasks"></i> 100 টি টাস্ক করুন</button>
+            <button class="btn btn-secondary" onclick="showPage('withdraw-page')"><i class="fas fa-wallet"></i> COIN উত্তোলন</button>
+            <div class="card"><h3><i class="fas fa-users"></i> বন্ধুকে আমন্ত্রণ</h3><p>প্রতি রেফারে: 5 COIN</p>
+                <div class="ref-link-box">
+                    <input type="text" id="referral-link" readonly>
+                    <button onclick="shareTelegram()" class="btn btn-primary"><i class="fab fa-telegram"></i></button>
+                </div>
             </div>
         </div>
-        <div class="card"><h3>আইডি: <span id="userId"></span></h3></div>
-    </div>
 
-    <div class="page" id="task">
-        <h2 style="text-align:center; margin-bottom:15px;">100 টি টাস্ক</h2>
-        <div id="task-content"></div>
-        <button class="btn btn-secondary" onclick="showPage('home')"><i class="fas fa-home"></i> হোমে যান</button>
-    </div>
-
-    <div class="page" id="withdraw">
-        <h2 style="text-align:center; margin-bottom:15px;">উত্তোলন</h2>
-        <div class="card">
-            <p>বর্তমান ব্যালেন্স: <b id="w-balance">0.00</b> টাকা</p>
-            <input type="number" id="w-amount" placeholder="ন্যূনতম 20 টাকা" style="width:100%; padding:12px; margin:10px 0; border-radius:10px; background:#000; border:1px solid var(--primary); color:var(--text);">
-            <select id="w-method" style="width:100%; padding:12px; margin:10px 0; border-radius:12px; background:#000; border:1px solid var(--primary); color:var(--text);">
-                <option value="bkash">bKash</option><option value="nagad">Nagad</option>
-            </select>
-            <input type="text" id="w-number" placeholder="01XXXXXXXXX" style="width:100%; padding:12px; margin:10px 0; border-radius:10px; background:#000; border:1px solid var(--primary); color:var(--text);">
-            <button class="btn btn-primary" onclick="withdraw()"><i class="fas fa-paper-plane"></i> রিকুয়েস্ট পাঠান</button>
+        <div class="page-section" id="task-page">
+            <h2 style="text-align:center; margin-bottom:15px;">100 টি গণিত টাস্ক</h2>
+            <div id="task-content"></div>
+            <button class="btn btn-secondary" onclick="showPage('home-page')"><i class="fas fa-home"></i> হোমে যান</button>
         </div>
-        <div id="w-history"></div>
-        <button class="btn btn-secondary" onclick="showPage('home')"><i class="fas fa-home"></i> হোমে যান</button>
+
+        <div class="page-section" id="withdraw-page">
+            <h2 style="text-align:center; margin-bottom:15px;">COIN উত্তোলন</h2>
+            <div class="card">
+                <p>বর্তমান ব্যালেন্স: <b id="total-earned-withdraw">0.00</b> COIN</p>
+                <input type="number" id="withdraw-amount" placeholder="ন্যূনতম 20000 COIN" style="width:100%; padding:12px; margin:10px 0; background:#000; border:1px solid var(--primary-glow); color:#fff; border-radius:10px;">
+                <select id="payment-method" style="width:100%; padding:12px; margin:10px 0; background:#000; border:1px solid var(--primary-glow); color:#fff; border-radius:10px;"><option value="bkash">bKash</option><option value="nagad">Nagad</option><option value="rocket">Rocket</option></select>
+                <input type="text" id="withdraw-phone" placeholder="01XXXXXXXXX" style="width:100%; padding:12px; margin:10px 0; background:#000; border:1px solid var(--primary-glow); color:#fff; border-radius:10px;">
+                <button class="btn btn-primary" onclick="withdrawPoints()"><i class="fas fa-paper-plane"></i> রিকুয়েস্ট পাঠান</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="bottom-nav">
-    <a href="#" class="nav-item active" onclick="showPage('home')"><i class="fas fa-home"></i><span>হোম</span></a>
-    <a href="#" class="nav-item" onclick="showPage('task')"><i class="fas fa-tasks"></i><span>টাস্ক</span></a>
-    <a href="#" class="nav-item" onclick="showPage('withdraw')"><i class="fas fa-wallet"></i><span>উত্তোলন</span></a>
-</div>
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active" onclick="showPage('home-page')"><i class="fas fa-home"></i><span>হোম</span></a>
+        <a href="#" class="nav-item" onclick="showPage('task-page')"><i class="fas fa-tasks"></i><span>টাস্ক</span></a>
+        <a href="#" class="nav-item" onclick="showPage('withdraw-page')"><i class="fas fa-wallet"></i><span>উত্তোলন</span></a>
+    </div>
+    <div id="notification" class="notification"><span id="notification-text"></span></div>
 
-<div id="notification" class="notification"></div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getDatabase, ref, set, get, update, push } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getDatabase, ref, set, get, update, push, onValue } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+        const firebaseConfig = { apiKey: "AIzaSyCxOxWS0U12rDDILeNklJ5ybhTCozSGpw0", authDomain: "earn-money-e8092.firebaseapp.com", databaseURL: "https://earn-money-e8092-default-rtdb.firebaseio.com", projectId: "earn-money-e8092", storageBucket: "earn-money-e8092.firebasestorage.app", messagingSenderId: "829995766944", appId: "1:829995766944:web:8fac1890685bd26a1ea5c5" };
+        const app = initializeApp(firebaseConfig); const db = getDatabase(app);
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCxOxWS0U12rDDILeNklJ5ybhTCozSGpw0",
-  authDomain: "earn-money-e8092.firebaseapp.com",
-  databaseURL: "https://earn-money-e8092-default-rtdb.firebaseio.com",
-  projectId: "earn-money-e8092",
-  storageBucket: "earn-money-e8092.firebasestorage.app",
-  messagingSenderId: "829995766944",
-  appId: "1:829995766944:web:8fac1890685bd26a1ea5c5",
-  measurementId: "G-7XFZK9NRM6"
-};
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+        let tg = window.Telegram.WebApp; tg.expand();
+        let userId = tg.initDataUnsafe?.user?.id || localStorage.getItem('userId') || Math.floor(100000 + Math.random() * 900000).toString();
+        localStorage.setItem('userId', userId);
+        let userData = { earnedPoints: 0, referralEarnings: 0, referralCount: 0, tasks: {}, blocked: false };
+        let mathQuestions = [];
+        let settings = { perAdRate: 2, minWithdraw: 20000, referralBonus: 5 };
+        const BOT_USERNAME = "banglatask2026_bot"; // এখানে তোমার Bot এর নাম দাও
+        const WEBAPP_URL = ""; // এখানে তোমার Vercel Link দাও
 
-// Telegram Bot Info এখানে দাও
-const BOT_USERNAME = "banglatask2026_bot"; // @ ছাড়া শুধু নাম
-const WEBAPP_URL = "https://bk-71-earn.vercel.app/"; // তোমার Vercel Link
+        // তোমার 25 টা BengalAds Placement ID
+        const bannerPlacements = [
+        "3c343a65ea742ac19969353ed51d9655088f93e4", "7b8b30a33f04421d6c579a157a39a4bb6fdc868c", "b76e4995e9e4131d0407d85cb55ace43b2961b3c", "e52472980926dbb5781a079b29df975cf8a7acf7", "15bb2caedd19eaf4816f4dbfb5e2ae6c2e3e3238",
+        "8a31db0e1582a1f762731297b2e0b3f625c29b97", "8fbb29e645f51153d51131497f68d97dcb4cd763", "c7008f12836799d3d5a7397946f94188680572a2", "0a4e8bc709e465a61cb4d7a0beb344fdb95c410f", "eced6ce074e335ed78ca6988075e9bfa4daa2028",
+        "8560475437aa7d35d047e0e38f6075ea13f21ed8", "70bbccadee7b6170320685b10fb238f252122614", "160931cfdd2dc85b4789117a867933b3ba56489a", "9c7150bf744bca88192e13e0f2f42870b450f6a3", "ad5c1e3e2688d5027b244c054b1c9ac7009d0148",
+        "28b1bf9762b352c4e4b1f6dd6a7720bcc636f2cc", "aca8b85db3a4b1619266c6d79d8bcde06546c14a", "917f83ca10e2ab8b5759d46b69d23c2dc3ffd0fe", "540aa743dbddece41c7e7a0236c8786c0fc11b12", "ef44055fe68f454f4871076d7f209518777a9a39",
+        "431ecbf677b9fc3e1034783ddcbbbdda898ba364", "f091455c4970808ba7a1c3f36fd3d68afdd8952d", "2f6afde51480c6a32bc233ca720d4f52da3dc241", "52e1bfa274adc9ee2614ee85114b879e2e94c613", "565c23828481d6150deecfb366d9267056f39acd"
+        ];
 
-let tg = window.Telegram.WebApp;
-tg.expand(); // Full screen
+        function generateMath() { for(let i=0; i<100; i++){ let a = Math.floor(Math.random()*50)+1; let b = Math.floor(Math.random()*50)+1; mathQuestions.push({q: `${a} + ${b}`, ans: a+b}); } }
 
-let userId = tg.initDataUnsafe?.user?.id || localStorage.getItem('userId') || Math.floor(100000 + Math.random() * 900000).toString();
-localStorage.setItem('userId', userId);
-
-let userData = { balance: 0, total: 0, referral: 0, referralEarnings: 0, tasks: {}, blocked: false };
-let mathQuestions = [];
-
-function generateMath() {
-    mathQuestions = [];
-    for(let i=0; i<100; i++){
-        let a = Math.floor(Math.random()*50)+1;
-        let b = Math.floor(Math.random()*50)+1;
-        mathQuestions.push({q: `${a} + ${b}`, ans: a+b});
-    }
-}
-
-async function loadUser() {
-    checkReferral();
-    const snap = await get(ref(db, 'users/'+userId));
-    if(snap.exists()) userData = {...userData,...snap.val()};
-    else await set(ref(db, 'users/'+userId), {...userData, name: tg.initDataUnsafe?.user?.first_name || "User" });
-    updateUI();
-    document.getElementById('userId').innerText = userId;
-
-    // Telegram Referral Link
-    let refLink = `https://t.me/${BOT_USERNAME}?startapp=ref_${userId}`;
-    document.getElementById('referral-link').value = refLink;
-}
-
-function updateUI() {
-    document.getElementById('balance').innerText = userData.balance.toFixed(2);
-    document.getElementById('total').innerText = userData.total.toFixed(2);
-    document.getElementById('referral').innerText = userData.referral;
-    document.getElementById('w-balance').innerText = userData.balance.toFixed(2);
-}
-
-// Telegram StartApp দিয়ে Refer ধরবে
-function checkReferral() {
-    let startParam = tg.initDataUnsafe?.start_param; // startapp=ref_12345
-    if (startParam && startParam.startsWith('ref_') &&!localStorage.getItem('referredBy')) {
-        let referrerId = startParam.split('ref_')[1];
-        if(referrerId!== userId){
-            localStorage.setItem('referredBy', referrerId);
-            get(ref(db, 'users/' + referrerId)).then(snap=>{
-                let rData = snap.val() || {};
-                update(ref(db, 'users/' + referrerId), {
-                    referral: (rData.referral || 0) + 1,
-                    referralEarnings: (rData.referralEarnings || 0) + 2,
-                    balance: (rData.balance || 0) + 2,
-                    total: (rData.total || 0) + 2
-                });
-            });
-            showNotification('রেফারেল বোনাস 2 টাকা!', 'success');
-        }
-    }
-}
-
-// Telegram Share Button
-window.shareTelegram = function() {
-    let refLink = document.getElementById('referral-link').value;
-    let text = `টাকা আয় করুন 🔥\nপ্রতিদিন 100 টি টাস্ক করে আয় করুন\nরেফার করলেই 2 টাকা বোনাস\nএখানে জয়েন করুন: ${refLink}`;
-    tg.shareUrl(refLink, text);
-}
-
-window.showPage = function(page) {
-    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-    document.getElementById(page).classList.add('active');
-    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-    event.target.closest('.nav-item').classList.add('active');
-    if(page=='task') loadTask();
-    if(page=='withdraw') loadWithdrawHistory();
-}
-
-function loadTask() {
-    let html = '';
-    for(let i=0; i<100; i++){
-        let taskData = userData.tasks[i] || {completed: false, time: 0};
-        let canDo =!taskData.completed || (Date.now() - taskData.time > 24*60*60*1000);
-        let timeLeft = '';
-        if(!canDo) {
-            let left = 24*60*60*1000 - (Date.now() - taskData.time);
-            let hours = Math.floor(left / 3600000);
-            let mins = Math.floor((left % 3600000) / 60000);
-            timeLeft = `<div class="timer">আবার করতে পারবেন: ${hours} ঘন্টা ${mins} মিনিট পর</div>`;
+        async function loadUser() {
+            checkReferral();
+            const snap = await get(ref(db, 'users/'+userId));
+            if(snap.exists()) userData = {...userData,...snap.val()};
+            else await set(ref(db, 'users/'+userId), {...userData, name: tg.initDataUnsafe?.user?.first_name || "User" });
+            updateUI();
+            generateReferralLink();
         }
 
-        html += `<div id="banners-task-${i}">`;
-        for(let j=0; j<25; j++){
-            html += `<div class="ad-box" id="banner-box-${i}-${j}">Banner ${j+1}</div>`;
-        }
-        html += `</div>`;
+        function updateUI() { let total = userData.earnedPoints + userData.referralEarnings; document.getElementById('earned-money').innerText = total.toFixed(2); document.getElementById('watched-ads').innerText = Object.keys(userData.tasks).length; document.getElementById('total-earned-withdraw').innerText = total.toFixed(2); }
 
-        html += `
-        <div class="math-box ${!canDo? 'completed' : ''}" id="math-${i}">
-            <h3>টাস্ক ${i+1}</h3>
-            <p style="font-size:22px; margin:10px;">${mathQuestions[i].q} =?</p>
-            <input type="number" id="ans-${i}" ${!canDo? 'disabled' : ''}>
-            <button class="btn btn-primary" onclick="checkAns(${i})" ${!canDo? 'disabled' : ''}>Submit</button>
-            ${timeLeft}
-        </div>`;
-    }
-    document.getElementById('task-content').innerHTML = html;
-}
-
-window.checkAns = async function(index) {
-    let taskData = userData.tasks[index] || {completed: false, time: 0};
-    if(taskData.completed && (Date.now() - taskData.time < 24*60*60*1000)) return showNotification('24 ঘন্টা পর আবার করুন', 'warning');
-
-    let ans = parseInt(document.getElementById(`ans-${index}`).value);
-    if(ans === mathQuestions[index].ans){
-        userData.balance = (userData.balance || 0) + 0.25;
-        userData.total = (userData.total || 0) + 0.25;
-        userData.tasks[index] = {completed: true, time: Date.now()};
-        await update(ref(db, 'users/'+userId), userData);
-        showNotification('সঠিক উত্তর! +0.25 টাকা', 'success');
-    } else {
-        showNotification('ভুল উত্তর! 0 টাকা', 'danger');
-    }
-    updateUI();
-    loadTask();
-}
-
-async function withdraw() {
-    let amount = parseFloat(document.getElementById('w-amount').value);
-    if(amount < 20 || amount > userData.balance) return showNotification('ভুল পরিমাণ', 'danger');
-    let data = {userId, amount, method: document.getElementById('w-method').value, number: document.getElementById('w-number').value, status: 'pending', time: Date.now()};
-    await push(ref(db, 'withdraws'), data);
-    userData.balance -= amount;
-    await update(ref(db, 'users/'+userId), userData);
-    showNotification('রিকুয়েস্ট পাঠানো হয়েছে', 'success');
-    updateUI();
-}
-
-function loadWithdrawHistory() {
-    onValue(ref(db, 'withdraws'), (snap)=>{
-        let html = '<div class="card"><h3>Withdraw History</h3>';
-        snap.forEach(child=>{
-            if(child.val().userId == userId){
-                html += `<p>${child.val().amount} টাকা - ${child.val().status}</p>`;
+        function checkReferral() {
+            let startParam = tg.initDataUnsafe?.start_param;
+            if (startParam && startParam.startsWith('ref_') &&!localStorage.getItem('referredBy')) {
+                let referrerId = startParam.split('ref_')[1];
+                if(referrerId!== userId){
+                    localStorage.setItem('referredBy', referrerId);
+                    get(ref(db, 'users/' + referrerId)).then(snap=>{ let rData = snap.val() || {}; update(ref(db, 'users/' + referrerId), { referralCount: (rData.referralCount || 0) + 1, referralEarnings: (rData.referralEarnings || 0) + settings.referralBonus }); });
+                    showNotification(`${settings.referralBonus} COIN রেফারেল বোনাস!`, 'success');
+                }
             }
-        });
-        html += '</div>';
-        document.getElementById('w-history').innerHTML = html;
-    });
-}
+        }
 
-function showNotification(msg, type){
-    let n = document.getElementById('notification');
-    n.innerText = msg; n.className = `notification show`;
-    n.style.borderLeft = `4px solid var(--${type})`;
-    setTimeout(()=>n.classList.remove('show'), 3000);
-}
+        function generateReferralLink() { let refLink = `https://t.me/${BOT_USERNAME}?startapp=ref_${userId}`; document.getElementById('referral-link').value = refLink; }
+        window.shareTelegram = function() { let refLink = document.getElementById('referral-link').value; tg.shareUrl(refLink, `COIN আয় করুন 🔥\nপ্রতি রেফারে ${settings.referralBonus} COIN\nLink: ${refLink}`); }
 
-generateMath();
-loadUser();
-</script>
+        window.showPage = function(page) {
+            document.querySelectorAll('.page-section').forEach(p=>p.classList.remove('active'));
+            document.getElementById(page).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+            event.target.closest('.nav-item').classList.add('active');
+            if(page=='task-page') loadTask();
+        }
+
+        function loadTask() {
+            let html = '';
+            for(let i=0; i<100; i++){
+                let taskData = userData.tasks[i] || {completed: false, time: 0};
+                let canDo =!taskData.completed || (Date.now() - taskData.time > 24*60*60*1000);
+                let timeLeft = ''; if(!canDo) { let left = 24*60*60*1000 - (Date.now() - taskData.time); let hours = Math.floor(left / 3600000); let mins = Math.floor((left % 3600000) / 60000); timeLeft = `<div class="timer">আবার করতে পারবেন: ${hours} ঘন্টা ${mins} মিনিট পর</div>`; }
+
+                html += `<div id="banners-task-${i}">`;
+                for(let j=0; j<25; j++){
+                    let zoneId = `zone-${i}-${j}`;
+                    html += `<div class="ad-box"><div id="${zoneId}" style="width:320px;height:50px;"></div></div>`;
+                }
+                html += `</div>`;
+                html += `<div class="math-box ${!canDo? 'completed' : ''}" id="math-${i}"><h3>টাস্ক ${i+1}</h3><p style="font-size:22px; margin:10px;">${mathQuestions[i].q} =?</p><input type="number" id="ans-${i}" ${!canDo? 'disabled' : ''}><button class="btn btn-primary" onclick="checkAns(${i})" ${!canDo? 'disabled' : ''}>Submit +${settings.perAdRate} COIN</button>${timeLeft}</div>`;
+            }
+            document.getElementById('task-content').innerHTML = html;
+
+            // 2500 টা Banner Auto Load
+            for(let i=0; i<100; i++){
+                for(let j=0; j<25; j++){
+                    let placementId = bannerPlacements[j];
+                    let zoneId = `zone-${i}-${j}`;
+                    setTimeout(() => {
+                        let s = document.createElement("script");
+                        s.async = true;
+                        s.referrerPolicy = "origin";
+                        s.src = `https://bengalads.com/widget-render.php?placement=${placementId}&target=${zoneId}&width=320&height=50&v=20260816_2231`;
+                        let el = document.getElementById(zoneId);
+                        if(el) el.appendChild(s);
+                    }, 20 * (i*25 + j));
+                }
+            }
+        }
+
+        window.checkAns = async function(index) {
+            let taskData = userData.tasks[index] || {completed: false, time: 0};
+            if(taskData.completed && (Date.now() - taskData.time < 24*60*60*1000)) return showNotification('24 ঘন্টা পর আবার করুন', 'warning');
+            let ans = parseInt(document.getElementById(`ans-${index}`).value);
+            if(ans === mathQuestions[index].ans){
+                userData.earnedPoints += settings.perAdRate;
+                userData.tasks[index] = {completed: true, time: Date.now()};
+                await update(ref(db, 'users/'+userId), userData);
+                showNotification(`সঠিক! +${settings.perAdRate} COIN`, 'success');
+            } else { showNotification('ভুল উত্তর! 0 COIN', 'error'); }
+            updateUI();
+            loadTask();
+        }
+
+        async function withdrawPoints() {
+            let amount = parseFloat(document.getElementById('withdraw-amount').value);
+            let total = userData.earnedPoints + userData.referralEarnings;
+            if(amount < settings.minWithdraw || amount > total) return showNotification('ভুল পরিমাণ', 'error');
+            if(!document.getElementById('payment-method').value ||!document.getElementById('withdraw-phone').value) return showNotification('সব তথ্য পূরণ করো', 'error');
+            await push(ref(db, 'withdraw_requests'), {userId, amount, method: document.getElementById('payment-method').value, phone: document.getElementById('withdraw-phone').value, status: 'pending', time: Date.now()});
+            userData.earnedPoints = 0; userData.referralEarnings = 0;
+            await update(ref(db, 'users/'+userId), userData);
+            showNotification('রিকুয়েস্ট পাঠানো হয়েছে', 'success');
+            updateUI();
+        }
+
+        function showNotification(msg, type){
+            let n = document.getElementById('notification');
+            n.innerText = msg;
+            n.className = `notification show`;
+            n.style.borderLeft = `4px solid var(--${type})`;
+            setTimeout(()=>n.classList.remove('show'), 3000);
+        }
+
+        generateMath(); loadUser();
+    </script>
 </body>
 </html>
